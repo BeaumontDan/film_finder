@@ -28,6 +28,10 @@ After you finish this project, feel free to challenge yourself to continue build
 
 If you get stuck during this project or would like to see an experienced developer work through it, click “Get Unstuck“ to see a project walkthrough video.
 
+### Features
+
+- HTTP Requests
+
 ### Technologies
 
 - JavaScript
