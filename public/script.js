@@ -1,5 +1,3 @@
-import helpers from './public/helpers'
-
 const tmdbKey = '60ae79f7ce4178548997e1d72c7d3612';
 const tmdbBaseUrl = 'https://api.themoviedb.org/3';
 const playBtn = document.getElementById('playBtn');
@@ -11,8 +9,8 @@ const getGenres = async () => {
     try {
       const response = await fetch(urlToFetch);
       if(response.ok){
-        const jsonReponse = await response.json();
-        const genre = jsonReponse.genres;
+        const jsonResponse = await response.json();
+        const genre = jsonResponse.genres;
         return genre;
       }
     } catch(error) {
@@ -21,9 +19,9 @@ const getGenres = async () => {
   };
 
 const getMovies = async () => {
-    const selectedGenre = helpers.getSelectedGenre();
+    const selectedGenre = getSelectedGenre();
     const discoverMovieEndpoint = '/discover/movie';
-    const requestParams = `?api_key=${tmdbKey}&?with_genres=${selectedGenre}`;
+    const requestParams = `?api_key=${tmdbKey}&with_genres=${selectedGenre}`;
     const urlToFetch = `${tmdbBaseUrl}${discoverMovieEndpoint}${requestParams}`;
     try {
       const response = await fetch(urlToFetch);
@@ -38,8 +36,8 @@ const getMovies = async () => {
   };
 
   const getMovieInfo = async(movie) => {
-    const movieID = movie.id;
-    const movieEndpoint = '/movie/movieID';
+    const movieId = movie.id;
+    const movieEndpoint = `/movie/${movieId}`;
     const requestParams = `?api_key=${tmdbKey}`;
     const urlToFetch = `${tmdbBaseUrl}${movieEndpoint}${requestParams}`;
     
@@ -47,7 +45,7 @@ const getMovies = async () => {
       const response = await fetch(urlToFetch);
       if(response.ok){
         const jsonResponse = await response.json();
-        const movieInfo = jsonResponse.results;
+        const movieInfo = jsonResponse;
         return movieInfo;
       }
     } catch(error) {
