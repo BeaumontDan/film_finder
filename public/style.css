@@ -1,14 +1,29 @@
 body {
-    background-color: #7f0920;
+    background-color: #000000;
     color: #0a0408;
 }
 
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+header img {
+    height: 100px;
+    width: auto;
+    padding: 1rem;
+}
+
+
 #appTitle {
-    text-align: center;
-    margin: 0px auto;
+    margin: 0;
     display: block;
     font-family: 'Staatliches', sans-serif;
     font-size: 80px;
+    color: white;
 }
 
 #genreForm, #playBtn {
@@ -16,6 +31,7 @@ body {
     margin: 0px auto;
     display: block;
     font-family: 'Fredoka One', sans-serif;
+    color: white;
 }
 
 #movieInfo {
@@ -47,19 +63,23 @@ img#moviePoster {
     line-height: 1.25;
 }
 
-#movieTitle, #movieOverview {
-    padding:  32px;
+#movieTitle, #movieOverview, #movieReleaseDate, #ratingSection, #movieCast{
+    padding: 20px 32px;
 }
 
 #playBtn {
-    margin-top: 20px;
+    margin-top: 10px;
     font-size: 25px;
-    padding: 7px 10px;
+    padding: 7px 20px;
     border-radius: 10px;
     border-style: none;
-    background-color: #B97828;
-    color: #fdc238;
+    background-image: linear-gradient(to right, #880001, #FA0A01 , #FF7600);
+    color: white;
     cursor:  pointer;
+}
+
+#playBtn:hover {
+    background-image: linear-gradient(to left, #FA0A01 , #FF7600);
 }
 
 label {
@@ -69,13 +89,15 @@ label {
 }
 
 select {
-    width: 200px;
-    height: auto;
+    width: 300px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 15px;
+    margin: 1rem;
 }
 
 #likeOrDislikeBtns {
     text-align: center;
-    margin: 0px auto;  
 }
 
 #likeBtn, #dislikeBtn {

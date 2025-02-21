@@ -71,6 +71,27 @@ const createMovieOverview = (overview) => {
     return overviewParagraph;
 };
 
+//----------------------------------------------------------------
+
+// Create HTML for release date
+const createReleaseDate = (date) => {
+    const releaseDate = document.createElement('p');
+    releaseDate.setAttribute('id', 'movieReleaseDate');
+    releaseDate.innerHTML = `Released: ${date}`;
+    return releaseDate;
+  };
+  
+  // Create HTML for cast list
+  const createMovieCast = (cast) => {
+    const castInfo = document.createElement('span');
+    castInfo.setAttribute('id', 'movieCast');
+    castInfo.innerHTML = `Cast: ${cast}`;
+  
+    return castInfo;
+  };
+
+  //----------------------------------------------------------------
+
 // Returns a random movie from the first page of movies
 const getRandomMovie = (movies) => {
     const randomIndex = Math.floor(Math.random() * movies.length);
@@ -79,7 +100,7 @@ const getRandomMovie = (movies) => {
 };
 
 // Uses the DOM to create HTML to display the movie
-const displayMovie = (movieInfo) => {
+const displayMovie = (movieInfo, movieCast) => {
     const moviePosterDiv = document.getElementById('moviePoster');
     const movieTextDiv = document.getElementById('movieText');
     const likeBtn = document.getElementById('likeBtn');
@@ -88,12 +109,16 @@ const displayMovie = (movieInfo) => {
     // Create HTML content containing movie info
     const moviePoster = createMoviePoster(movieInfo.poster_path);
     const titleHeader = createMovieTitle(movieInfo.title);
+    const releaseDate = createReleaseDate(movieInfo.release_date);
     const overviewText = createMovieOverview(movieInfo.overview);
+    const cast = createMovieCast(movieCast);
   
     // Append title, poster, and overview to page
     moviePosterDiv.appendChild(moviePoster);
     movieTextDiv.appendChild(titleHeader);
+    movieTextDiv.appendChild(releaseDate);
     movieTextDiv.appendChild(overviewText);
+    movieTextDiv.appendChild(cast);
   
     showBtns();
     likeBtn.onclick = likeMovie;
